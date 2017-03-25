@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Siu Routine</string>
+    <string name="class_prompt">Choose your department</string>
+
+    <string-array name="student_class">
+        <item>CSE 1-1</item>
+        <item>CSE 1-2</item>
+        <item>CSE 2-1</item>
+        <item>CSE 2-2</item>
+        <item>CSE 3-1</item>
+        <item>CSE 3-2</item>
+        <item>CSE 4-1</item>
+        <item>CSE 4-2</item>
+        <item>ENG 1-1</item>
+        <item>ENG 1-2</item>
+        <item>ENG 2-1</item>
+        <item>ENG 3-1</item>
+        <item>ENG 3-2</item>
+        <item>ENG 4-1A</item>
+        <item>ENG 4-1B</item>
+        <item>ENG 4-2</item>
+        <item>ECE 1-1</item>
+        <item>ECE 1-2</item>
+        <item>ECE 2-1</item>
+        <item>ECE 2-2</item>
+        <item>ECE 3-1</item>
+        <item>ECE 3-2</item>
+        <item>ECE 4-1</item>
+        <item>ECE 4-2</item>
+        <item>BBA 1-1</item>
+        <item>BBA 1-2</item>
+        <item>BBA 2-1</item>
+        <item>BBA 2-2</item>
+    </string-array>
+</resources>

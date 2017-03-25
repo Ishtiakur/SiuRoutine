@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.shobojit.siuroutine.SplashScreen">
+
+    <ImageView
+    android:layout_width="match_parent"
+    android:src="@drawable/rag2"
+    android:scaleType="centerCrop"
+    android:layout_height="match_parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/splash_screen_logo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/splasg_screen_logo"
+        android:layout_marginBottom="33dp"
+        android:layout_above="@+id/tt"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="Welcome To SiuRoutine"
+        android:textColor="#FFF"
+        android:gravity="center"
+        android:id="@+id/tt"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="243dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="15sp"
+            android:id="@+id/tt1"
+            android:textStyle="bold"
+            android:textColor="#fff"
+            android:text="...Which Makes ur life Easier :)"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="37dp"
+            android:layout_below="@+id/splash_screen_logo"
+            android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
