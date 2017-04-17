@@ -2,23 +2,28 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.shobojit.siuroutine">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo2"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
-        <activity android:name=".SplashScreen">
-
-        </activity>
-        <activity android:name=".SteramIO" />
-        <activity android:name=".Kenburns">
+        <activity android:name=".SplashScreenPackage.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+        <activity android:name=".viewpager_Routine.RoutineDetail">
+
+        </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="c5fb3b7fba176c02aba7cdee2197e7ccf34a22f7" />
     </application>
 
 </manifest>

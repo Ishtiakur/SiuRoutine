@@ -2,36 +2,62 @@ package com.example.shobojit.siuroutine;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
+import android.content.SharedPreferences;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.shobojit.siuroutine.Model.JsonData;
+import com.example.shobojit.siuroutine.SplashScreenPackage.SplashScreen;
+import com.example.shobojit.siuroutine.viewpager_Routine.RoutineDetail;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import rebus.bottomdialog.BottomDialog;
-import ss.com.bannerslider.banners.DrawableBanner;
-import ss.com.bannerslider.banners.RemoteBanner;
-import ss.com.bannerslider.views.BannerSlider;
+
 
 public class MainActivity extends AppCompatActivity {
     Toolbar tl;
-    Context cn;TextView tv;
+    Context cn;
+    TextView tv;
+    Button go;
     private BottomDialog dialog;
     FloatingActionButton fab;
-    BannerSlider bannerSlider;
+    String SelectSpinner;
+    List<String> batchlist;
+    String data;
+    SharedPreferences preferences;
+    Spinner rspinner;
+    JsonData js;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         cn = this;
+        batchlist = new ArrayList<>();
+        preferences = getSharedPreferences("RoutineData",MODE_PRIVATE);
+       // data = getIntent().getStringExtra("Value");
+        data = preferences.getString("Routine","null");
+        getBatchlist(data);
         Initializaion();
-        Banner();
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,6 +65,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    void getBatchlist(String data){
+        try {
+            JSONObject js = new JSONObject(data);
+            JSONArray ar = js.getJSONArray("dpt");
+            for (int i = 0;i<ar.length();i++){
+                batchlist.add(ar.getJSONObject(i).getString("name"));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    
     void Dailog(){
 
         dialog = new BottomDialog(MainActivity.this);
@@ -73,27 +113,47 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    void Banner(){
-        bannerSlider = (BannerSlider) findViewById(R.id.banner_slider1);
-       /* bannerSlider.addBanner(new DrawableBanner(R.drawable.a));
-        bannerSlider.addBanner(new DrawableBanner(R.drawable.law));*/
-        bannerSlider.addBanner(new DrawableBanner(R.drawable.ragbba));
-        bannerSlider.addBanner(new DrawableBanner(R.drawable.ragsiu));
-        bannerSlider.addBanner(new DrawableBanner(R.drawable.bng));
-        bannerSlider.addBanner(new DrawableBanner(R.drawable.rag));
-        bannerSlider.addBanner(new DrawableBanner(R.drawable.rag2));
-    }
+
     void Initializaion (){
         fab = (FloatingActionButton) findViewById(R.id.floatingActionButton);
         tv = (TextView) findViewById(R.id.tt1);
         tv.setSelected(true);
+        go = (Button) findViewById(R.id.go);
         tl= (Toolbar) findViewById(R.id.tool);
         setSupportActionBar(tl);
         if(getSupportActionBar()!=null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
+        Log.i("Main Activity Data",data);
+        rspinner = (Spinner) findViewById(R.id.sp);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
+                R.layout.spinner, batchlist);
+        rspinner.setAdapter(adapter);
+    /*    rspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+         @Override
+         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+             SelectSpinner = batchlist.get(position);
+             //setDpt(SelectSpinner);
+           *//* Toast.makeText(cn, SelectSpinner, Toast.LENGTH_SHORT).show();*//*
+         }
+         @Override
+         public void onNothingSelected(AdapterView<?> parent) {
+
+         }
+     });*/
+
+    }
+   public  void GoRoutine(View v){
+       Toast.makeText(cn,rspinner.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
+       setDpt(rspinner.getSelectedItem().toString());
+       startActivity(new Intent(MainActivity.this,RoutineDetail.class));
+    }
 
 
+    void setDpt(String dpt){
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("Dpt",dpt);
+        editor.commit();
     }
 }

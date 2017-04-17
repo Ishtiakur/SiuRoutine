@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         card_view:cardCornerRadius="25dp"
         android:layout_below="@+id/tool"
+        android:layout_margin="5dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
         <LinearLayout
@@ -60,15 +61,11 @@
                 android:layout_below="@+id/tt1"
                 android:orientation="vertical">
 
-                <ss.com.bannerslider.views.BannerSlider
-                    android:id="@+id/banner_slider1"
+                <com.flaviofaria.kenburnsview.KenBurnsView
+                    android:id="@+id/image"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
-                    android:background="@color/colorAccent"
-                    app:defaultIndicators="round_square"
-                    app:indicatorSize="15dp"
-                    app:interval="5000"
-                    app:loopSlides="true" />
+                    android:src="@drawable/campus" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -76,19 +73,19 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
                     android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:orientation="horizontal">
 
                     <Spinner
                         android:layout_width="150dp"
-                        android:layout_height="30dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="center"
-                        android:entries="@array/student_class"
                         android:prompt="@string/class_prompt"
-                        android:spinnerMode="dialog"
+                        android:spinnerMode="dropdown"
+                        android:id="@+id/sp"
                         android:textAlignment="center"
                         android:textDirection="inherit" />
 
@@ -101,6 +98,8 @@
                         android:layout_height="wrap_content"
                         android:background="@color/colorPrimaryDark"
                         android:text="Go"
+                        android:onClick="GoRoutine"
+                        android:id="@+id/go"
                         android:textColor="#fff"
                         android:textSize="15sp" />
                 </LinearLayout>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<android.support.v7.widget.CardView
+    android:layout_margin="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+            android:background="@color/colorPrimary"
+            android:layout_width="0dp"
+            android:orientation="vertical"
+                android:padding="10dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content">
+                <TextView
+                android:layout_width="match_parent"
+                android:text="Class : "
+
+                android:textColor="#000"
+                android:layout_height="wrap_content" />
+                <android.support.v4.widget.Space
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp" />
+                <TextView
+                android:layout_width="match_parent"
+                android:text="Room No : "
+                    android:textColor="#000"
+                    android:layout_height="wrap_content" />
+                <android.support.v4.widget.Space
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp" />
+                <TextView
+                    android:textColor="#000"
+                    android:layout_width="match_parent"
+                android:text="Teacher : "
+                android:layout_height="wrap_content" />
+                <android.support.v4.widget.Space
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp" />
+                <TextView
+                    android:textColor="#000"
+                    android:layout_width="match_parent"
+                android:text="Start Time : "
+                android:layout_height="wrap_content" />
+                <android.support.v4.widget.Space
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp" />
+                <TextView
+                    android:textColor="#000"
+                    android:layout_width="match_parent"
+                android:text="End Time :"
+                android:layout_height="wrap_content" />
+                <android.support.v4.widget.Space
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp" />
+        </LinearLayout>
+            <android.support.v4.widget.Space
+                android:layout_width="5dp"
+                android:layout_height="match_parent" />
+        <LinearLayout
+            android:background="@color/colorAccent"
+            android:layout_width="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:layout_height="wrap_content">
+        <TextView
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:id="@+id/cn"
+            android:layout_width="wrap_content"
+            android:text="HUM 101 "
+            android:layout_height="match_parent" />
+            <android.support.v4.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+            <TextView
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:id="@+id/room"
+                android:layout_width="wrap_content"
+                android:text="215 "
+                android:layout_height="match_parent" />
+            <android.support.v4.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+            <TextView
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:id="@+id/tname"
+                android:layout_width="wrap_content"
+                android:text="MAG Asif "
+                android:layout_height="match_parent" />
+            <android.support.v4.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+            <TextView
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:id="@+id/starttime"
+                android:layout_width="wrap_content"
+                android:text="10.10"
+                android:layout_height="match_parent" />
+            <android.support.v4.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+            <TextView
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:id="@+id/endtime"
+                android:layout_width="wrap_content"
+                android:text="11.00 "
+                android:layout_height="match_parent" />
+            <android.support.v4.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
+
+</LinearLayout>

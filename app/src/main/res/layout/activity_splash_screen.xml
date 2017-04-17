@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.shobojit.siuroutine.SplashScreen">
+    tools:context="com.example.shobojit.siuroutine.SplashScreenPackage.SplashScreen">
 
     <ImageView
     android:layout_width="match_parent"
     android:src="@drawable/rag2"
-    android:scaleType="centerCrop"
+        android:alpha="0.8"
+        android:scaleType="centerCrop"
     android:layout_height="match_parent" />
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -46,4 +47,5 @@
             android:layout_below="@+id/splash_screen_logo"
             android:layout_centerHorizontal="true" />
 
+    
 </RelativeLayout>
