@@ -19,7 +19,10 @@ allprojects {
         maven {
             url 'http://dl.bintray.com/raphaelbussa/maven'
 
+
+
         }
+        maven { url 'https://jitpack.io' }
 
     }
 }

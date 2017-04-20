@@ -26,7 +26,9 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.crashlytics.android.Crashlytics;
 import com.example.shobojit.siuroutine.MainActivity;
+import com.example.shobojit.siuroutine.Model.SharedPreferencesMOdel;
 import com.example.shobojit.siuroutine.R;
+import com.example.shobojit.siuroutine.viewpager_Routine.RoutineDetail;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import io.fabric.sdk.android.Fabric;
@@ -35,8 +37,10 @@ import org.json.JSONObject;
 public class SplashScreen extends AppCompatActivity {
     Typeface t1 ;
     TextView tt,tt1;
-    String url ="https://api.myjson.com/bins/myvjf";
+    String dptName;
+    String url ="https://api.myjson.com/bins/ctb4f";
     Context cn;
+    SharedPreferencesMOdel sharedPreferencesMOdel;
     private FirebaseAnalytics mFirebaseAnalytics;
     private RequestQueue req;
     SharedPreferences preferences;
@@ -53,15 +57,18 @@ public class SplashScreen extends AppCompatActivity {
         preferences = getSharedPreferences("RoutineData",MODE_PRIVATE);
         intialzation();
         StartAlgo();
-
     }
-
 
     void  StartAlgo(){
         if(!haveNetworkConnection()){
             String res = preferences.getString("Routine","null");
             if(!res.equals("null")){
-                StartMainActivity(res);
+                if(CheckDpt(res)){
+                    StartRoutineActivity();
+                }else {
+                    StartMainActivity(res);
+                }
+
             }else {
                 AlertDialog alertDialog = new AlertDialog.Builder(cn).create();
                 alertDialog.setTitle("No Internet Connection");
@@ -84,6 +91,7 @@ public class SplashScreen extends AppCompatActivity {
                 alertDialog.show();
             }
         }else {
+
             GetDataFromNet();
 
         }
@@ -99,7 +107,13 @@ public class SplashScreen extends AppCompatActivity {
                 editor.putString("Routine",routine);
                 editor.commit();
                 Log.i("Data",routine);
-                StartMainActivity(routine);
+               // StartMainActivity(routine);
+                if(CheckDpt(routine)==true){
+                    StartRoutineActivity();
+                }else {
+                    StartMainActivity(routine);
+                }
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -111,7 +125,6 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     void StartMainActivity(final String routine){
-
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -119,7 +132,19 @@ public class SplashScreen extends AppCompatActivity {
                 startActivity(new Intent(SplashScreen.this,MainActivity.class).putExtra("Value",routine));
                 finish();
             }
-        },4000);
+        },2000);
+    }
+
+
+    void StartRoutineActivity(){
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startActivity(new Intent(SplashScreen.this,RoutineDetail.class));
+                finish();
+            }
+        },1500);
     }
 
     private boolean haveNetworkConnection() {
@@ -151,5 +176,17 @@ public class SplashScreen extends AppCompatActivity {
         tt.setAnimation(anim1);
         Animation anim2 = AnimationUtils.loadAnimation(this,R.anim.fadein);
         tt1.setAnimation(anim2);
+    }
+
+    boolean CheckDpt(String routine){
+        dptName = preferences.getString("Dpt","null");
+      String json   = preferences.getString("Dpt","null");
+        if(!dptName.equals("null")){
+            new SharedPreferencesMOdel().setDptName(dptName);
+            new SharedPreferencesMOdel().setJsonData(routine);
+            return  true;
+        }else {
+            return  false ;
+        }
     }
 }
