@@ -1,11 +1,10 @@
 package com.example.shobojit.siuroutine.SplashScreenPackage;
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.graphics.Typeface;
+
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Handler;
@@ -17,7 +16,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import com.aapbd.appbajarlib.notification.BusyDialog;
+import com.aapbd.appbajarlib.notification.StylusBusy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -30,15 +30,13 @@ import com.example.shobojit.siuroutine.Model.SharedPreferencesMOdel;
 import com.example.shobojit.siuroutine.R;
 import com.example.shobojit.siuroutine.viewpager_Routine.RoutineDetail;
 import com.google.firebase.analytics.FirebaseAnalytics;
-
 import io.fabric.sdk.android.Fabric;
 import org.json.JSONObject;
-
 public class SplashScreen extends AppCompatActivity {
-    Typeface t1 ;
-    TextView tt,tt1;
+    ImageView imageView;
     String dptName;
-    String url ="https://api.myjson.com/bins/ctb4f";
+    BusyDialog busyDialog;
+    String url ="https://api.myjson.com/bins/13ydi7";
     Context cn;
     SharedPreferencesMOdel sharedPreferencesMOdel;
     private FirebaseAnalytics mFirebaseAnalytics;
@@ -91,6 +89,8 @@ public class SplashScreen extends AppCompatActivity {
                 alertDialog.show();
             }
         }else {
+            busyDialog = new BusyDialog(cn,false,"Please wait....",false);
+          busyDialog.show();
 
             GetDataFromNet();
 
@@ -113,7 +113,6 @@ public class SplashScreen extends AppCompatActivity {
                 }else {
                     StartMainActivity(routine);
                 }
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -125,6 +124,9 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     void StartMainActivity(final String routine){
+        if(busyDialog!=null){
+            busyDialog.dismis();
+        }
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -132,11 +134,13 @@ public class SplashScreen extends AppCompatActivity {
                 startActivity(new Intent(SplashScreen.this,MainActivity.class).putExtra("Value",routine));
                 finish();
             }
-        },2000);
+        },1000);
     }
 
-
     void StartRoutineActivity(){
+        if(busyDialog!=null){
+            busyDialog.dismis();
+        }
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -144,13 +148,12 @@ public class SplashScreen extends AppCompatActivity {
                 startActivity(new Intent(SplashScreen.this,RoutineDetail.class));
                 finish();
             }
-        },1500);
+        },1000);
     }
 
     private boolean haveNetworkConnection() {
         boolean haveConnectedWifi = false;
         boolean haveConnectedMobile = false;
-
         ConnectivityManager cm = (ConnectivityManager) getSystemService(this.CONNECTIVITY_SERVICE);
         NetworkInfo[] netInfo = cm.getAllNetworkInfo();
         for (NetworkInfo ni : netInfo) {
@@ -159,23 +162,15 @@ public class SplashScreen extends AppCompatActivity {
                     haveConnectedWifi = true;
             if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
                 if (ni.isConnected())
-                    haveConnectedMobile = true;
-        }
+                    haveConnectedMobile = true; }
         return haveConnectedWifi || haveConnectedMobile;
     }
 
     void intialzation (){
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(cn);
-        tt = (TextView) findViewById(R.id.tt);
-        tt1 = (TextView) findViewById(R.id.tt1);
-        t1 = Typeface.createFromAsset(getAssets(),"sketch.ttf");
         Animation anim = AnimationUtils.loadAnimation(this,R.anim.fadein);
-        ImageView spLogo = (ImageView) findViewById(R.id.splash_screen_logo);
-        spLogo.setAnimation(anim);
-        Animation anim1 = AnimationUtils.loadAnimation(this,R.anim.fadein);
-        tt.setAnimation(anim1);
-        Animation anim2 = AnimationUtils.loadAnimation(this,R.anim.fadein);
-        tt1.setAnimation(anim2);
+        imageView = (ImageView) findViewById(R.id.splashimg);
+        imageView.setAnimation(anim);
+
     }
 
     boolean CheckDpt(String routine){

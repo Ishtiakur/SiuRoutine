@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "273943472867",
+    "firebase_url": "https://siuroutine.firebaseio.com",
+    "project_id": "siuroutine",
+    "storage_bucket": "siuroutine.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:273943472867:android:c5b25e3d074ab1e0",
+        "android_client_info": {
+          "package_name": "com.example.shobojit.siuroutine"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "273943472867-pfnhe5ne0r7n8uabp6rt94v6r9vdmush.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.shobojit.siuroutine",
+            "certificate_hash": "1046867ddb6833990a8b9b55558270d3bb1184f5"
+          }
+        },
+        {
+          "client_id": "273943472867-0ljnmdafsk7thkkbhqcmg0dl04jimd5a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjXPDrF32qrFd8N6E5qy8GPTPp1OL5ylw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "273943472867-0ljnmdafsk7thkkbhqcmg0dl04jimd5a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

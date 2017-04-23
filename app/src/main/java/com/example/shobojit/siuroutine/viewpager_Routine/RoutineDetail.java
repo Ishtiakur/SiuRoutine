@@ -37,6 +37,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class RoutineDetail extends AppCompatActivity {
@@ -73,6 +75,18 @@ public class RoutineDetail extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    void GetDateToSetViewPager(){
+        Calendar c = Calendar.getInstance();
+        int day =c.get(Calendar.DAY_OF_WEEK);
+       if(day==1){vp.setCurrentItem(1);}
+       else if (day ==2){vp.setCurrentItem(2);}
+       else if (day ==3){vp.setCurrentItem(3);}
+       else if (day ==4){vp.setCurrentItem(4);}
+       else if (day==5){vp.setCurrentItem(5);}
+       else if (day==6){ vp.setCurrentItem(6); }
+    }
+
     void SetupViewPager(ViewPager vp){
        ViewPagerAdapter vpa = new ViewPagerAdapter(getSupportFragmentManager());
        vpa.AddFragment(new Sat(),"SAT");
@@ -82,6 +96,7 @@ public class RoutineDetail extends AppCompatActivity {
        vpa.AddFragment(new Wed(),"WED");
        vpa.AddFragment(new Thu(),"THU");
        vp.setAdapter(vpa);
+        GetDateToSetViewPager();
     }
 
     void Initialize (){
@@ -107,6 +122,8 @@ public class RoutineDetail extends AppCompatActivity {
         int resId = item.getItemId();
         if(resId==R.id.logout){
             Logout();
+        } else if(resId==R.id.exit){
+           finish();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -180,7 +197,6 @@ class ViewPagerAdapter extends FragmentPagerAdapter {
         public ViewPagerAdapter(FragmentManager fm) {
                 super(fm);
             }
-
         void AddFragment(Fragment f,String fragname){
                 Fraglist.add(f);
                 Fragname.add(fragname);

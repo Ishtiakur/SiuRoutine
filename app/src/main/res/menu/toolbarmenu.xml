@@ -9,8 +9,8 @@
     android:icon="@mipmap/logout"
     app:showAsAction="ifRoom"/>
     <item
-        android:id="@+id/about"
-        android:title="About Us"
+        android:id="@+id/setting"
+        android:title="Setting"
         app:showAsAction="never"
 
         />
