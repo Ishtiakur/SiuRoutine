@@ -92,16 +92,19 @@
                 android:layout_width="wrap_content"
                 android:text="215 "
                 android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/tname"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="MAG Asif "
+                android:textColor="#000"
+                android:textStyle="bold" />
+
             <android.support.v4.widget.Space
                 android:layout_width="match_parent"
                 android:layout_height="5dp" />
-            <TextView
-                android:textStyle="bold"
-                android:textColor="#000"
-                android:id="@+id/tname"
-                android:layout_width="wrap_content"
-                android:text="MAG Asif "
-                android:layout_height="match_parent" />
+
             <android.support.v4.widget.Space
                 android:layout_width="match_parent"
                 android:layout_height="5dp" />

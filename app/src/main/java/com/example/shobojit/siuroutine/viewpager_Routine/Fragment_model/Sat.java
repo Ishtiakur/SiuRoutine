@@ -48,7 +48,6 @@ public class Sat extends Fragment {
         getDptName();
         getJsonData();
         Intialized(v);
-
         return v;
     }
 
@@ -69,7 +68,6 @@ public class Sat extends Fragment {
         //dptName = preferences.getString("Dpt", "null");
         //Toast.makeText(cn,dptName,Toast.LENGTH_LONG).show();
         //Data =  preferences.getString("Routine","null");
-
     }
 
     void getJsonData(){
@@ -105,7 +103,8 @@ class  SatAdapter extends ArrayAdapter{
 
     private static class ViewHolder {
         TextView classname,roomno,teachername,starttime,endtime;
-    }
+
+        }
 
 
     @Override

@@ -90,7 +90,7 @@
                         android:textDirection="inherit" />
 
                     <Space
-                        android:layout_width="20dp"
+                        android:layout_width="23dp"
                         android:layout_height="wrap_content" />
 
                     <Button
